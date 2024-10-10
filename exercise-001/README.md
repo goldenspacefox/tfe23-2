@@ -1,13 +1,14 @@
 # Aufgabenstellung
 
 
-## Notwenidige git Kommandos
+## Notwendige git Kommandos
 
 ```sh
 git status
 git branch -a
 git branch -m neuer-branch-name
 git add -p 
+git commit -m ""
 ....
 ```
 git add -p  zeigt an, was sich geändert hat 

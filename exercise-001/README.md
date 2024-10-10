@@ -6,6 +6,7 @@
 ```sh
 git status
 git branch -a
+git branch -m neuer-branch-name
 ....
 ```
 

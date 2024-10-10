@@ -7,8 +7,10 @@
 git status
 git branch -a
 git branch -m neuer-branch-name
+git add -p 
 ....
 ```
+git add -p  zeigt an, was sich geändert hat 
 
 ## Parameterraum
 

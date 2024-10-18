@@ -13,7 +13,9 @@ auto main(int argc, char **argv) -> int
     CLI::App app{PROJECT_NAME};
     try
     {
+        int counter = 20; 
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
+        app.add_option{"-c, --count", counter, "How many items to insert"};
         app.parse(argc, argv);
     }
     catch (const CLI::ParseError &e)

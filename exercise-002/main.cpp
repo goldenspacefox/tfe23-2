@@ -8,6 +8,13 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+
+//Global variable
+int foo;
+
+int bar = 100;
+int bar2 = 42;
+
 auto main(int argc, char** argv) -> int
 {
     /**
@@ -28,41 +35,10 @@ auto main(int argc, char** argv) -> int
         return app.exit(e);
     }
 
-    
-    // Seed with a real random value, if available
-    std::random_device r;
+    fmt::println("Hello exercise two");
+    fmt::println("The value of variable foo: {} and the address {}",foo,fmt::ptr(&foo));
+    fmt::println("TThe value of variable bar: {} and the address {}",bar,fmt::ptr(&bar));
+    fmt::println("The value of variable bar2: {} and the address {}",bar2,fmt::ptr(&bar2));
 
-    // Choose a random mean between 1 and 100
-    std::default_random_engine e1(r());
-    std::uniform_int_distribution<int> uniform_dist(1, 100);
-    int rand_value = uniform_dist(e1);
-
-    std::vector<unsigned int> numbers;
-    auto start = std::chrono::system_clock::now();
-    for (int i = 0; i < counter; i++)
-    {
-        numbers.push_back(uniform_dist(e1));
-    }
-    auto end = std::chrono::system_clock::now();
-
-    auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    fmt::println("The inserting took: {}", elapsed);
-    //fmt::println("The random vector: [ {} ]", fmt::join(numbers, ", "));
-
-
-    fmt::println("Let's sort the numbers vector");
-    fmt::println("--------------------------------------------------------------------------");
-
-    start = std::chrono::system_clock::now();
-    std::sort(numbers.begin(), numbers.end(), std::less<int>());
-    end = std::chrono::system_clock::now();
-
-    fmt::println("The sorted numbers vector");
-    fmt::println("--------------------------------------------------------------------------");
-
-
-    //fmt::println("The sorted vector: [ {} ]", fmt::join(numbers, ", "));
-    elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    fmt::println("The sorting took: {}", elapsed);
     return 0; /* exit gracefully*/
 }

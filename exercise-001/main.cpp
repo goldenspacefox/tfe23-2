@@ -1,5 +1,6 @@
 #include <fmt/chrono.h>
 #include <fmt/format.h>
+#include <chrono>
 
 #include "CLI/CLI.hpp"
 #include "config.h"
@@ -33,14 +34,23 @@ auto main(int argc, char **argv) -> int
      * More info at https://fmt.dev/latest/api.html
      */
     fmt::print("Hello, {}!\n", app.get_name());
-
     fmt::print("Value of, {}!\n", argc);
-
     //fmt::print("Value of argv[0], {}!\n", argv[0]); -> possible null pointer exception 
-
     fmt::print("Counter value: {}\n", counter);
 
-    /* INSERT YOUR CODE HERE */
+    auto start = std::chrono::system_clock::now();
 
-    return 0; /* exit gracefully*/
+    /* Platz für "do some work" */
+    for (int i = 0; i < counter; ++i) {
+        // Simulierter Arbeitsaufwand, zum Beispiel das Einfügen von Elementen
+    }
+
+    /* Zeitmessung beenden */
+    auto end = std::chrono::system_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+
+    /* Ergebnisse ausgeben */
+    fmt::print("Zeit zum Einfügen von {} Elementen: {}ms\n", counter, elapsed.count());
+
+    return 0; 
 }

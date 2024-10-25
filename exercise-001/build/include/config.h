@@ -6,6 +6,6 @@ constexpr auto PROJECT_VER  {"0.0.2"};
 constexpr auto PROJECT_VER_MAJOR {"0"};
 constexpr auto PROJECT_VER_MINOR {"0"};
 constexpr auto PTOJECT_VER_PATCH {"2"};
-constexpr auto PROJECT_BUILD_DATE {"2024-10-18T09:22:29"};
+constexpr auto PROJECT_BUILD_DATE {"2024-10-25T08:44:31"};
 
 #endif // CONFIG_H_IN

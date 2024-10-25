@@ -1,6 +1,5 @@
 #include <fmt/chrono.h>
 #include <fmt/format.h>
-#include <chrono>
 
 #include "CLI/CLI.hpp"
 #include "config.h"
@@ -38,19 +37,40 @@ auto main(int argc, char **argv) -> int
     //fmt::print("Value of argv[0], {}!\n", argv[0]); -> possible null pointer exception 
     fmt::print("Counter value: {}\n", counter);
 
+    // Seed with a real random value, if available
+    std::random_device r;
+
+    // Choose a random mean between 1 and 100
+    std::default_random_engine e1(r());
+    std::uniform_int_distribution<int> uniform_dist(1, 100);
+    int rand_value = uniform_dist(e1);
+
+    std::vector<unsigned int> numbers;
     auto start = std::chrono::system_clock::now();
-
-    /* Platz für "do some work" */
-    for (int i = 0; i < counter; ++i) {
-        // Simulierter Arbeitsaufwand, zum Beispiel das Einfügen von Elementen
+    for (int i = 0; i < counter; i++)
+    {
+        numbers.push_back(uniform_dist(e1));
     }
-
-    /* Zeitmessung beenden */
     auto end = std::chrono::system_clock::now();
+
     auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    fmt::println("The inserting took: {}", elapsed);
+    //fmt::println("The random vector: [ {} ]", fmt::join(numbers, ", "));
 
-    /* Ergebnisse ausgeben */
-    fmt::print("Zeit zum Einfügen von {} Elementen: {}ms\n", counter, elapsed.count());
 
-    return 0; 
+    fmt::println("Let's sort the numbers vector");
+    fmt::println("--------------------------------------------------------------------------");
+
+    start = std::chrono::system_clock::now();
+    std::sort(numbers.begin(), numbers.end(), std::less<int>());
+    end = std::chrono::system_clock::now();
+
+    fmt::println("The sorted numbers vector");
+    fmt::println("--------------------------------------------------------------------------");
+
+
+    //fmt::println("The sorted vector: [ {} ]", fmt::join(numbers, ", "));
+    elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    fmt::println("The sorting took: {}", elapsed);
+    return 0; /* exit gracefully*/
 }

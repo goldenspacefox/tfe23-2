@@ -33,7 +33,11 @@ auto main(int argc, char **argv) -> int
      * More info at https://fmt.dev/latest/api.html
      */
     fmt::print("Hello, {}!\n", app.get_name());
+
     fmt::print("Value of, {}!\n", argc);
+
+    //fmt::print("Value of argv[0], {}!\n", argv[0]); -> possible null pointer exception 
+
     fmt::print("Counter value: {}\n", counter);
 
     /* INSERT YOUR CODE HERE */

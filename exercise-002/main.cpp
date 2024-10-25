@@ -40,5 +40,5 @@ auto main(int argc, char** argv) -> int
     fmt::println("TThe value of variable bar: {} and the address {}",bar,fmt::ptr(&bar));
     fmt::println("The value of variable bar2: {} and the address {}",bar2,fmt::ptr(&bar2));
 
-    return 0; /* exit gracefully*/
+    return 0; 
 }
